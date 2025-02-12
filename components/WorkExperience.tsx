@@ -5,22 +5,22 @@ import { motion } from "framer-motion"
 
 const experiences = [
   {
-    title: "Senior IT Engineer",
-    company: "Tech Solutions Inc.",
-    period: "2020 - Present",
-    description: "Leading complex IT projects and implementing cutting-edge technologies.",
+    title: "LLM应用开发",
+    company: "某小型创业公司",
+    period: "2023 - 至今",
+    description: "领导LLM项目并实施前沿技术。",
   },
   {
-    title: "IT Engineer",
-    company: "Digital Innovations",
-    period: "2017 - 2020",
-    description: "Developed and maintained critical IT infrastructure and systems.",
+    title: "Python工程师",
+    company: "某央企",
+    period: "2021 - 2023",
+    description: "参与自动化运维相关工作。",
   },
   {
-    title: "Junior IT Specialist",
-    company: "StartUp Tech",
-    period: "2015 - 2017",
-    description: "Assisted in IT operations and learned industry-standard practices and technologies.",
+    title: "Python&Java工程师",
+    company: "法律行业某top1公司",
+    period: "2019 - 2021",
+    description: "参与推荐算法相关工作。",
   },
 ]
 
@@ -34,10 +34,9 @@ export default function WorkExperience() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Work Experience
+          工作经历
         </motion.h2>
         <div className="relative">
-          {/* Vertical line */}
           <motion.div
             className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-500"
             initial={{ height: 0 }}
