@@ -57,7 +57,7 @@ export default function Hero() {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 blur-2xl"></div>
               <Image
-                src="https://cdn.img2ipfs.com/ipfs/Qmd9oiFKVGAsmVe8RT6CMNsQBr7vavHnJe5ij6iDTWzJH9?filename=about.webp"
+                src="/images/about.webp"
                 alt="个人照片"
                 width={300}
                 height={300}
