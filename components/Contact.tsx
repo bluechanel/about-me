@@ -1,22 +1,110 @@
-import { Mail, MapPin } from "lucide-react"
+"use client"
+
+import { Mail, MapPin, Github, Linkedin, Send } from "lucide-react"
+import { motion } from "framer-motion"
+
+const contactInfo = [
+  {
+    icon: Mail,
+    label: "邮箱",
+    value: "bluechanel612@gmail.com",
+    link: "mailto:bluechanel612@gmail.com",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/yourusername",
+    link: "https://github.com/yourusername",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/yourusername",
+    link: "https://linkedin.com/in/yourusername",
+  },
+  {
+    icon: MapPin,
+    label: "位置",
+    value: "中国西安",
+    link: null,
+  },
+]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+}
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-gray-800">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">联系方式</h2>
-        <div className="max-w-md mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
-          <div className="space-y-4">
-            <p className="flex items-center">
-              <Mail className="h-5 w-5 mr-3 text-blue-400" />
-              bluechanel612@gmail.com
-            </p>
-            <p className="flex items-center">
-              <MapPin className="h-5 w-5 mr-3 text-blue-400" />
-              中国西安
-            </p>
-          </div>
+    <section id="contact" className="py-20 bg-gradient-to-b from-gray-800 to-gray-900 w-full">
+      <div className="w-full px-4 sm:px-6 lg:px-12">
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600"
+          >
+            联系方式
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-gray-400 max-w-2xl mx-auto"
+          >
+            随时欢迎与我交流和探讨
+          </motion.p>
         </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+        >
+          {contactInfo.map((info, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+              <div className="relative bg-gray-800 rounded-xl p-6 flex items-center space-x-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300">
+                <div className="p-3 rounded-lg bg-blue-500/10">
+                  <info.icon className="h-6 w-6 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">{info.label}</h3>
+                  {info.link ? (
+                    <a
+                      href={info.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-blue-400 transition-colors flex items-center group"
+                    >
+                      {info.value}
+                      <Send className="h-4 w-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  ) : (
+                    <p className="text-gray-400">{info.value}</p>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

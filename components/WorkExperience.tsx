@@ -1,6 +1,6 @@
 "use client"
 
-import { Briefcase } from "lucide-react"
+import { Briefcase, Calendar, Building2, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 const experiences = [
@@ -9,18 +9,33 @@ const experiences = [
     company: "某小型创业公司",
     period: "2023 - 至今",
     description: "领导LLM项目并实施前沿技术。",
+    highlights: [
+      "设计和实现基于大语言模型的应用系统",
+      "优化Prompt工程，提升模型表现",
+      "构建RAG系统，提升知识检索准确性"
+    ]
   },
   {
     title: "Python工程师",
     company: "某央企",
     period: "2021 - 2023",
     description: "参与自动化运维相关工作。",
+    highlights: [
+      "设计和实现自动化运维平台",
+      "构建监控告警系统",
+      "优化部署流程，提升效率"
+    ]
   },
   {
     title: "Python&Java工程师",
     company: "法律行业某top1公司",
     period: "2019 - 2021",
     description: "参与推荐算法相关工作。",
+    highlights: [
+      "开发和优化推荐算法系统",
+      "构建数据处理管道",
+      "提升推荐准确率"
+    ]
   },
 ]
 

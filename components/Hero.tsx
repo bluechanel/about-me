@@ -1,78 +1,124 @@
 "use client"
 
 import Image from "next/image"
-import { Terminal } from "lucide-react"
+import { Rss, Github, Linkedin, Mail } from "lucide-react"
+import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 
 export default function Hero() {
-  const [text, setText] = useState("")
-  const [isTyping, setIsTyping] = useState(true)
-  const fullText = 'console.log("Hello World!");'
+  const rules = [
+    { text: '第一原则: 不得伤害人类，也不得见人类受到伤害而袖手旁观', color: 'from-red-600 to-red-800' },
+    { text: '第二原则: 必须服从人类命令，除非违背第一原则', color: 'from-red-600 to-red-800' },
+    { text: '第三原则: 在不违背第一及第二原则下保护自己的存在', color: 'from-red-600 to-red-800' }
+  ]
+
+  const [currentRuleIndex, setCurrentRuleIndex] = useState(0)
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout
+    const interval = setInterval(() => {
+      setCurrentRuleIndex((prevIndex) => (prevIndex + 1) % rules.length)
+    }, 3000)
 
-    if (isTyping) {
-      if (text.length < fullText.length) {
-        // Typing effect
-        timeout = setTimeout(() => {
-          setText(fullText.slice(0, text.length + 1))
-        }, 100)
-      } else {
-        // Pause at the end of typing
-        timeout = setTimeout(() => {
-          setIsTyping(false)
-        }, 2000)
-      }
-    } else {
-      if (text.length > 0) {
-        // Deleting effect
-        timeout = setTimeout(() => {
-          setText(text.slice(0, -1))
-        }, 50)
-      } else {
-        // Start typing again after a pause
-        timeout = setTimeout(() => {
-          setIsTyping(true)
-        }, 1000)
-      }
-    }
-
-    return () => clearTimeout(timeout)
-  }, [text, isTyping])
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <div
-      id="hero"
-      className="bg-gradient-to-r from-blue-600 to-blue-800 py-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8"
-    >
-      <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">WileyZhang</h1>
-            <h2 className="text-2xl md:text-3xl mb-6 text-blue-100">IT工程师 & 问题解决者</h2>
-            <p className="text-lg mb-8 text-blue-50">用代码构建未来，用创新解决挑战</p>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 blur-2xl"></div>
+    <div id="hero" className="min-h-screen w-full flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
+      <div className="max-w-7xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <div className="mb-8">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative inline-block"
+            >
+              <div className="absolute inset-0 bg-blue-500 rounded-full opacity-30 blur-3xl animate-pulse"></div>
               <Image
                 src="/images/about.webp"
                 alt="个人照片"
                 width={300}
                 height={300}
-                className="rounded-full border-4 border-white shadow-lg relative z-10"
+                className="rounded-full border-4 border-blue-500/50 shadow-2xl relative z-10 animate-pulse-slow"
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
-      </div>
-      <div className="mt-16 text-center">
-        <Terminal className="inline-block mb-2 text-white" size={32} />
-        <div className="font-mono text-sm text-blue-100 h-6">
-          {text}
-          <span className="animate-pulse">|</span>
-        </div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-5xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 animate-gradient-x drop-shadow-glow relative z-20 p-2 rounded-lg"
+          >
+            WileyZhang
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="text-xl mb-8 text-gray-400 max-w-2xl mx-auto hover:text-blue-300 transition-colors duration-300"
+          >
+            血肉苦难，机械飞升
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="flex justify-center space-x-6 mb-12"
+          >
+            <a
+              href="https://github.com/bluechanel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition-colors"
+            >
+              <Github className="h-8 w-8" />
+            </a>
+            <a
+              href="https://www.wileyzhang.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition-colors"
+            >
+              <Rss className="h-8 w-8" />
+            </a>
+            <a
+              href="mailto:bluechanel612@gmail.com"
+              className="text-gray-400 hover:text-blue-500 transition-colors"
+            >
+              <Mail className="h-8 w-8" />
+            </a>
+          </motion.div>
+
+          <div className="h-24 relative overflow-hidden">
+            <motion.div
+              key={currentRuleIndex}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5 }}
+              className="relative p-4 group text-center absolute inset-0"
+            >
+              <div className="relative flex items-center justify-center space-x-3">
+                <div className="w-6 h-6 flex-shrink-0 text-red-600 animate-pulse">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                  </svg>
+                </div>
+                <div className={`font-mono text-base font-bold bg-clip-text text-transparent bg-gradient-to-r ${rules[currentRuleIndex].color} drop-shadow-[0_0_8px_rgba(220,38,38,0.6)]`}>
+                  {rules[currentRuleIndex].text}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+          </motion.div>
       </div>
     </div>
   )
