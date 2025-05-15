@@ -1,6 +1,6 @@
 "use client"
 
-import { Mail, MapPin, Github, Linkedin, Send } from "lucide-react"
+import { Mail, MapPin, Github, Send, QrCode } from "lucide-react"
 import { motion } from "framer-motion"
 
 const contactInfo = [
@@ -13,14 +13,15 @@ const contactInfo = [
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/yourusername",
-    link: "https://github.com/yourusername",
+    value: "github.com/bluechanel",
+    link: "https://github.com/bluechanel",
   },
   {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/yourusername",
-    link: "https://linkedin.com/in/yourusername",
+    icon: QrCode,
+    label: "微信公众号",
+    value: "扫码关注",
+    link: null,
+    qrCode: "/images/wechat.png"
   },
   {
     icon: MapPin,
@@ -87,7 +88,16 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-1">{info.label}</h3>
-                  {info.link ? (
+                  {info.qrCode ? (
+                    <div className="relative group cursor-pointer">
+                      <p className="text-gray-400">{info.value}</p>
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="bg-white shadow-lg w-48 h-48">
+                          <img src={info.qrCode} alt="微信公众号二维码" className="w-48 h-48" />
+                        </div>
+                      </div>
+                    </div>
+                  ) : info.link ? (
                     <a
                       href={info.link}
                       target="_blank"
