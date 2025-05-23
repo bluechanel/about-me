@@ -27,29 +27,6 @@ export const metadata: Metadata = {
     site: '@WileyZhang',
     creator: '@WileyZhang',
     images: ['/og-image.png']
-  },
-  other: {
-    'schema:person': {
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'WileyZhang',
-      jobTitle: '大模型开发专家 & 技术引领者',
-      url: 'https://about.wileyzhang.com',
-      email: 'bluechanel612@gmail.com',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: '西安',
-        addressCountry: 'CN'
-      },
-      sameAs: [
-        'http://www.wileyzhang.com'
-      ],
-      knowsAbout: [
-        '大模型开发',
-        '人工智能',
-        '项目管理'
-      ]
-    }
   }
 };
 
