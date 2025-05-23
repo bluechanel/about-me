@@ -64,7 +64,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(metadata.other['schema:person'])
+            __html: JSON.stringify(metadata.other?.['schema:person'] ?? {})
           }}
         />
       </head>
