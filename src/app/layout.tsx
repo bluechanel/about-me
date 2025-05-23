@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     siteName: 'WileyZhang',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://about.wileyzhang.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'WileyZhang - 大模型开发专家'
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: '大模型开发专家 & 技术引领者的个人介绍页面',
     site: '@WileyZhang',
     creator: '@WileyZhang',
-    images: ['/og-image.png']
+    images: ['https://about.wileyzhang.com/og-image.png']
   }
 };
 
