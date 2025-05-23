@@ -4,6 +4,53 @@ import "@/app/globals.css";
 export const metadata: Metadata = {
   title: 'WileyZhang - 大模型开发专家',
   description: '大模型开发专家 & 技术引领者的个人介绍页面',
+  openGraph: {
+    title: 'WileyZhang - 大模型开发专家',
+    description: '大模型开发专家 & 技术引领者的个人介绍页面',
+    type: 'website',
+    locale: 'zh_CN',
+    url: 'https://about.wileyzhang.com',
+    siteName: 'WileyZhang',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'WileyZhang - 大模型开发专家'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'WileyZhang - 大模型开发专家',
+    description: '大模型开发专家 & 技术引领者的个人介绍页面',
+    site: '@WileyZhang',
+    creator: '@WileyZhang',
+    images: ['/og-image.png']
+  },
+  other: {
+    'schema:person': {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'WileyZhang',
+      jobTitle: '大模型开发专家 & 技术引领者',
+      url: 'https://about.wileyzhang.com',
+      email: 'bluechanel612@gmail.com',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: '西安',
+        addressCountry: 'CN'
+      },
+      sameAs: [
+        'http://www.wileyzhang.com'
+      ],
+      knowsAbout: [
+        '大模型开发',
+        '人工智能',
+        '项目管理'
+      ]
+    }
+  }
 };
 
 export default function RootLayout({
@@ -14,6 +61,12 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(metadata.other['schema:person'])
+          }}
+        />
       </head>
       <body>
         {children}
